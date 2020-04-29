@@ -1,8 +1,14 @@
 const express = require("express");
+const https = require("https");
 
 const app = new express();
 
 app.get("/", function(req,res){
+    const url = "https://api.openweathermap.org/data/2.5/weather?q=Kharghar&appid=482b31c6962e567d971dc9cd1b8b7c4c&units=metric";
+
+    https.get(url, function(response){
+        console.log(response);
+    });
     res.send("Server is up and running");
 });
 
