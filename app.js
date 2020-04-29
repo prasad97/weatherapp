@@ -13,15 +13,18 @@ app.get("/", function(req,res){
             //console.log(data);
             const weatherData = JSON.parse(data);
             //console.log(weatherData);
+            const temp = weatherData.main.temp;
             const desc = weatherData.weather[0].description;
-            console.log(desc);
-
+            const icon = weatherData.weather[0].icon;
+            const imageUrl = "http://openweathermap.org/img/wn/" + icon +"@2x.png";
+           
+            res.write("<p>The weather is currently " + desc +"</p>");
+            res.write("<h1>The temperature in Kharghar is " + temp + " degree celcius<?h1>");
+            res.write(`<img src = ${imageUrl}>`)
+            res.send();
 
         })
     })
-
-
-    res.send("Server is up and running");
 })
 
 
